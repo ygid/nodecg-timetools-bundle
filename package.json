@@ -1,0 +1,47 @@
+{
+  "name": "nodecg-timetools-bundle",
+  "version": "0.0.0",
+  "description": "Tools for all kinds of time controls, clocks, timers, countdowns, date comparisons, alarms, and much more",
+  "homepage": "https://github.com/ygid/nodecg-timetools-bundle",
+  "author": {
+    "name": "Jonathan Agundez",
+    "email": "admin@ygid.org",
+    "url": ""
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "nodecg",
+    "time",
+    "timer",
+    "countdown",
+    "date",
+    "clock",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.1.1",
+    "dashboardPanels": [
+      {
+        "name": "panel",
+        "title": "Time tools",
+        "width": 2,
+        "file": "panel.html",
+        "headerColor": "#525F78"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "index.html",
+        "width": 1280,
+        "height": 720
+      }
+    ]
+  },
+  "repository": "https://github.com/ygid/nodecg-timetools-bundle",
+  "license": "GPL-3.0"
+}
