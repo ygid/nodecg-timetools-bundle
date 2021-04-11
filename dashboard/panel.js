@@ -1,4 +1,5 @@
 const CounterInstances = nodecg.Replicant('CounterInstances');
+const CounterObjs = {};
 
 CounterInstances.on("change", (instances) => {
     if (instances) {
@@ -7,9 +8,18 @@ CounterInstances.on("change", (instances) => {
     }
 })
 
+const counterObjsWatcher = (obj) => {
+    obj.on("change", (objs, index) => {
+        displayCounterInstances(CounterInstances.value)
+    })
+}
+
 function generateCounterContainers(instances) {
     var instance_container = document.getElementById('counter-instances')
     for(var i=0; i<instances.length; i++) {
+        CounterObjs[instances[i].name] = nodecg.Replicant(instances[i].name);
+        counterObjsWatcher(CounterObjs[instances[i].name])
+        
         if (!document.getElementById('counter-container-'+i)) {
             var templ = document.createElement('div')
             templ.id = "counter-container-"+i.toString()
@@ -21,7 +31,14 @@ function generateCounterContainers(instances) {
 function displayCounterInstances(instances) {
     for(var i=0; i<instances.length; i++) {
         var counter_container = document.getElementById('counter-container-'+i)
-        var seconds = instances[i].elapsed
+        var seconds = 0
+        
+        var counter_obj = CounterObjs[instances[i].name];
+        if (counter_obj.value) {
+            seconds = counter_obj.value.elapsed
+        }
+
+        nodecg.log.debug(seconds);
         if (counter_container) {
             var clock = formatClock(seconds)
             counter_container.innerHTML = clock
@@ -34,7 +51,7 @@ function formatClock(totalSeconds) {
     var minute = Math.floor((totalSeconds - hour*3600)/60);
     var seconds = totalSeconds - (hour*3600 + minute*60);
     if(hour < 10)
-      hour = "0"+hour;
+      hour = "00"+hour;
     if(minute < 10)
       minute = "0"+minute;
     if(seconds < 10)

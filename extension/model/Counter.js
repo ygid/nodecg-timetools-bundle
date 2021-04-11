@@ -18,7 +18,7 @@ class Counter  {
             : this.interval_repeat = 1000;
     }
 
-    count() {
+    handleCount() {
         if (!this.paused) {
             if (this.mode == 1) {
                 this.countUp()
