@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<style>
+		.monospace {
+			font-family: monospace;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div id="datediff-instances">
+			
+		</div>
+	</div>
+	<template id="datediff-template">
+		<div>
+			<div>Date difference</div>
+			<div name="datediff"></div>
+			<!-- <input name="start-date" type="datetime-local" value=""> -->
+            <input name="end-date" type="datetime-local" value="">
+			
+			<button name="reset">Start</button>
+		</div>
+	</template>
+	<script src="datediffs.js" type="module"></script>
+</body>
+</html>

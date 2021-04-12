@@ -1,5 +1,5 @@
 const CounterInstances = nodecg.Replicant('CounterInstances');
-const CounterObjs = {};
+const CounterObjs = [];
 
 CounterInstances.on("change", (instances) => {
     if (instances) {
@@ -26,7 +26,6 @@ function generateCounterContainers(instances) {
             dom_obj.id = "counter-container-"+i.toString()
             var dom_obj2 = template.querySelectorAll('div div')[0]
             dom_obj2.innerHTML = "Counter " + i
-            console.log(i)
             var dom_obj3 = template.querySelector('button[name=pause]')
             // we bind i value to that function so it doesnt change every loop
             dom_obj3.addEventListener("click", pauseCounter.bind(null, i))

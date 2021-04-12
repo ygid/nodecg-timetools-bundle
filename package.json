@@ -27,10 +27,17 @@
     "compatibleRange": "^1.1.1",
     "dashboardPanels": [
       {
-        "name": "panel",
-        "title": "Time tools",
+        "name": "counters",
+        "title": "Time tools - Counters",
         "width": 3,
-        "file": "panel.html",
+        "file": "counters.html",
+        "headerColor": "#525F78"
+      },
+      {
+        "name": "datediffs",
+        "title": "Time tools - Date Diffs",
+        "width": 3,
+        "file": "datediffs.html",
         "headerColor": "#525F78"
       }
     ],

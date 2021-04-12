@@ -5,7 +5,7 @@ class Counter  {
         // super();
         this.type = 'counter';
         this.format = 'H:i:s';
-        this.paused = false;
+        this.paused = true;
         this.interval = null;
         
         this.name = name
