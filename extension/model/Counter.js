@@ -12,7 +12,7 @@ class Counter  {
 
         elapsed ? this.elapsed = elapsed 
             : this.elapsed=0;
-        mode ? this.mode = mode  /* 1- count up 2- count down */
+        mode ? this.mode = mode  /* 1- count up 0- count down */
             : this.mode = 1;
         interval_repeat ? this.interval_repeat = interval_repeat 
             : this.interval_repeat = 1000;
@@ -20,9 +20,9 @@ class Counter  {
 
     handleCount() {
         if (!this.paused) {
-            if (this.mode == 1) {
+            if (this.mode === 1) {
                 this.countUp()
-            } else if (this.mode == 0) {
+            } else if (this.mode === 0) {
                 this.countDown()
             }
         }
@@ -30,12 +30,14 @@ class Counter  {
     }
 
     countUp() {
-        this.elapsed+=1    
+        this.elapsed += 1    
     }
 
     countDown() {
-        if(!this.paused) {
-            this.elapsed+=1    
+        if (this.elapsed > 0) {
+            this.elapsed -= 1 
+        } else {
+            this.elapsed = 0;
         }
     }
 

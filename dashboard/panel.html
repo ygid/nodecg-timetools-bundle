@@ -14,6 +14,30 @@
 			
 		</div>
 	</div>
-	<script src="panel.js" type="module"></script>
+	<template id="counter-template">
+		<div>
+			<div>Counter</div>
+			<div name="counter"></div>
+			<input name="value" type="text" value="">
+			<label>Time (seconds)</label>
+			
+			<div>
+				<input type="radio" name="mode" value="1"
+					checked>
+				<label>Forward</label>
+			</div>
+			
+			<div>
+				<input type="radio" name="mode" value="0">
+				<label>Backwards</label>
+			</div>
+
+			<div>
+				<button name="pause">Pause/Start</button>
+				<button name="reset">Reset</button>
+			</div>
+		</div>
+	</template>
+	<script src="coounters.js" type="module"></script>
 </body>
 </html>

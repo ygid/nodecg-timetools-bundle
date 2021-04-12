@@ -16,7 +16,7 @@ module.exports = function (nodecg) {
 			}
 			// @TODO This needs an optimization so it doesnt update every tick
 			// We only should update it when it differs
-			if (obj != null) {
+			if (obj != null && obj != nodecg.Replicant(obj.name).value) {
 				nodecg.Replicant(obj.name).value = obj
 			}
 		}, obj.interval_repeat)
