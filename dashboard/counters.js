@@ -4,7 +4,10 @@ const CounterObjs = [];
 CounterInstances.on("change", (instances) => {
     if (instances) {
         generateCounterContainers(instances)
-        displayCounterInstances(instances)
+        NodeCG.waitForReplicants(CounterObjs).then(() => {
+            displayCounterInstances(instances)
+        })
+        
     }
 })
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <meta charset="UTF-8">
 	<style>
 		.monospace {
@@ -10,6 +11,7 @@
 </head>
 <body>
 	<div id="app">
+		<button id="add-datediff">ADD TIMER</button><br/><br/>
 		<div id="datediff-instances">
 			
 		</div>
@@ -22,6 +24,7 @@
             <input name="end-date" type="datetime-local" value="">
 			
 			<button name="reset">Start</button>
+			<button name="delete">Delete</button>
 		</div>
 	</template>
 	<script src="datediffs.js" type="module"></script>
