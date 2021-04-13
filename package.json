@@ -43,7 +43,27 @@
     ],
     "graphics": [
       {
-        "file": "index.html",
+        "file": "datediff-0-hours.html",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "file": "datediff-1-hours.html",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "file": "datediff-2-hours.html",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "file": "datediff-3-hours.html",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "file": "datediff-4-hours.html",
         "width": 1280,
         "height": 720
       }

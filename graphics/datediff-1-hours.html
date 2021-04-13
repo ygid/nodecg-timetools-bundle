@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<style>
+		body {
+			font-family: sans-serif;
+		}
+
+		.monospace {
+			font-family: monospace;
+		}
+	</style>
+</head>
+<body>
+	<div id="time"></div>
+	<script>
+		let id = 1;
+		const DateDiffObj = nodecg.Replicant(`datediff-${id}`);
+		
+		var el = document.querySelector('#time');
+		
+		DateDiffObj.on("change", (obj) => {
+			var seconds = 0
+			
+			if (obj) {
+				seconds = obj.elapsed;
+			}
+			var clock = formatClock(seconds)
+			el.innerHTML = `${clock}`
+		})
+
+		function formatClock(totalSeconds) {
+			var hour = Math.floor(totalSeconds /3600);
+			var minute = Math.floor((totalSeconds - hour*3600)/60);
+			var seconds = totalSeconds - (hour*3600 + minute*60);
+			if(hour < 10)
+			hour = "00"+hour;
+			if(minute < 10)
+			minute = "0"+minute;
+			if(seconds < 10)
+			seconds = "0"+seconds;
+			return hour + ":" + minute + ":" + seconds;
+		}
+
+	</script>
+</body>
+</html>
