@@ -66,6 +66,21 @@
         "file": "datediff-4-hours.html",
         "width": 1280,
         "height": 720
+      },
+      {
+        "file": "datediff-0-1-bar.html",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "file": "datediff-2-3-bar.html",
+        "width": 1280,
+        "height": 720
+      },
+      {
+        "file": "counter.html",
+        "width": 1280,
+        "height": 720
       }
     ]
   },

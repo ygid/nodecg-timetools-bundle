@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<style>
+		body {
+			font-family: sans-serif;
+		}
+
+		.monospace {
+			font-family: monospace;
+		}
+		#myProgress {
+		width: 100%;
+		background-color: rgb(175, 175, 175);
+		}
+
+		#myBar {
+			width: 10%;
+			height: 30px;
+			background-color: #4CAF50;
+			text-align: center; /* To center it horizontally (if you want) */
+			line-height: 30px; /* To center it vertically */
+			color: white;
+			background-color: #081A31;
+			overflow: visible;
+			font-weight: 800;
+			font-family: sans-serif  ;
+			-webkit-text-stroke: 1px rgb(2, 2, 2); /* width and color */
+		}
+	</style>
+</head>
+<body>
+	<div id="time"></div>
+	<div id="time1"></div>
+	<div id="myProgress">
+		<div id="myBar"></div>
+	  </div>
+	<script>
+		let id_end = 2;
+		let id_start = 3;
+		const DateDiffObjStart = nodecg.Replicant(`datediff-${id_start}`);
+		const DateDiffObjEnd = nodecg.Replicant(`datediff-${id_end}`);
+		
+		var el = document.querySelector('#time');
+		var el1 = document.querySelector('#time1');
+		
+		DateDiffObjEnd.on("change", (obj) => {
+			var seconds = 0
+			var seconds1 = 0;
+			var end = 0
+			
+			if (obj) {
+				today = new Date().getTime();
+				end = new Date(obj.end_datetime).getTime();
+				start = new Date(DateDiffObjStart.value.end_datetime).getTime();
+
+				seconds = obj.elapsed;
+				seconds1 = DateDiffObjStart.value.elapsed
+			}
+			
+			var q = Math.abs(today-start);
+			var d = Math.abs(end-start);
+			var percentage = ((q/d)*100).toFixed(2)
+			// var percentage = 10
+
+			
+			var clock = formatClock(seconds)
+			el.innerHTML = `${clock}`
+			
+			var clock1 = formatClock(seconds1)
+			el1.innerHTML = `${clock1}`
+			
+			updateBar(percentage, clock1)
+		})
+
+		function formatClock(totalSeconds) {
+			var hour = Math.floor(totalSeconds /3600);
+			var minute = Math.floor((totalSeconds - hour*3600)/60);
+			var seconds = totalSeconds - (hour*3600 + minute*60);
+			if(hour < 10)
+			hour = "00"+hour;
+			if(minute < 10)
+			minute = "0"+minute;
+			if(seconds < 10)
+			seconds = "0"+seconds;
+			return hour + ":" + minute + ":" + seconds;
+		}
+
+		function updateText(progress) {
+
+		}
+
+		function updateBar(progress, clock) {
+			var el = document.querySelector('#myBar');
+			el.style.width = progress + "%";
+			el.innerHTML = '' + clock + '';
+		}
+
+	</script>
+</body>
+</html>

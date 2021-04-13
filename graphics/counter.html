@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<style>
+		body {
+			font-family: sans-serif;
+		}
+
+		.monospace {
+			font-family: monospace;
+		}
+	</style>
+</head>
+<body>
+	<div name="counter" id='counter-container-0'></div>
+	<script>
+		let id = 4;
+		const Counter = nodecg.Replicant('counter-0');
+
+		Counter.on("change", (obj) => {
+			var counter_container = document.querySelector('#counter-container-0')
+			var seconds = 0
+			
+			seconds = obj.elapsed
+
+			if (counter_container) {
+				var clock = formatClock(seconds)
+				counter_container.innerHTML = clock
+			}
+		})
+
+		function formatClock(totalSeconds) {
+			var hour = Math.floor(totalSeconds /3600);
+			var minute = Math.floor((totalSeconds - hour*3600)/60);
+			var seconds = totalSeconds - (hour*3600 + minute*60);
+			if(hour < 10)
+			hour = "0"+hour;
+			if(minute < 10)
+			minute = "0"+minute;
+			if(seconds < 10)
+			seconds = "0"+seconds;
+			return hour + ":" + minute + ":" + seconds;
+		}
+
+	</script>
+</body>
+</html>
