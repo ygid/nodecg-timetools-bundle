@@ -3,10 +3,17 @@ module.exports = function (nodecg) {
 	const {DateDiff} = require('../model/DateDiff.js');
 
 	var default_config_datediff = {name: 'datediff-0', elapsed: 0, end_datetime: null, compute: false, format: null}
+	var default_conf_arr = [
+		{name: 'datediff-0', elapsed: 0, end_datetime: null, compute: false, format: null},
+		{name: 'datediff-1', elapsed: 0, end_datetime: null, compute: false, format: null},
+		{name: 'datediff-2', elapsed: 0, end_datetime: null, compute: false, format: null},
+		{name: 'datediff-3', elapsed: 0, end_datetime: null, compute: false, format: null},
+		{name: 'datediff-4', elapsed: 0, end_datetime: null, compute: false, format: null}
+	]
 	const interval_obj = {}
 
-	if (!nodecg.Replicant('DateDiffInstances')) {
-		nodecg.Replicant('DateDiffInstances', {defaultValue: [], persistent: true})
+	if (!nodecg.Replicant('DateDiffInstances') || !Array.isArray(nodecg.Replicant('DateDiffInstances').length)) {
+		nodecg.Replicant('DateDiffInstances', {defaultValue: default_conf_arr, persistent: true})
 	}
     
 	initializeReplicants();
@@ -29,7 +36,7 @@ module.exports = function (nodecg) {
 		if (!Array.isArray(nodecg.readReplicant('DateDiffInstances'))) {
 			nodecg.Replicant('DateDiffInstances').value = []
 		}
-		nodecg.log.debug(nodecg.readReplicant('DateDiffInstances'))
+		
 		var arr =[];
 		for (var c = 0; c < nodecg.readReplicant('DateDiffInstances').length; c++) {
 			arr.push(nodecg.readReplicant('DateDiffInstances')[c])
@@ -49,10 +56,13 @@ module.exports = function (nodecg) {
 			default_conf = default_config_datediff
 		}
 		
-		let DateDiffInstances = nodecg.Replicant('DateDiffInstances').value;
 		
 		let datediff = null;
-		for (var i = 0; i < DateDiffInstances.length; i++) {
+		if (!Array.isArray(nodecg.readReplicant('DateDiffInstances'))) {
+			nodecg.Replicant('DateDiffInstances').value = default_conf_arr
+		}
+		let DateDiffInstances = nodecg.Replicant('DateDiffInstances').value;
+		for (var i = 0; i < nodecg.Replicant('DateDiffInstances').value.length; i++) {
 			let ci = DateDiffInstances[i]
 			let co = null;
 			if (nodecg.Replicant(`datediff-${ci.name}`)) {

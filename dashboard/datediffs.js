@@ -34,9 +34,9 @@ function generateDateDiffContainers(instances) {
 
             var dom_obj4 = template.querySelector('button[name=reset]')
             dom_obj4.addEventListener("click", resetDateDiff.bind(null, i))
-            var dom_obj5 = template.querySelector('button[name=delete]')
-            dom_obj5.addEventListener("click", deleteDateDiff.bind(null, i))
-
+            // var dom_obj5 = template.querySelector('button[name=delete]')
+            // dom_obj5.addEventListener("click", deleteDateDiff.bind(null, i))
+            
             instance_container.appendChild(template)
         }
     }   
@@ -133,8 +133,9 @@ const deleteDateDiff = function (i) {
                     url: "/timetools/delete-datediff",
                     data: j
                 })
+                nodecg.Replicant([`datediff-${i}`]).value = null;
             }
         }
     }
-    nodecg.Replicant([`datediff-${i}`]).value = null;
+    
 }
